@@ -68,7 +68,7 @@
   <h2 id="formTitle">Login to TurboTronix</h2>
 
   <input type="text" id="nameField" placeholder="Your Name" style="display:none;" />
-  <input type="text" id="phoneField" placeholder="Phone Number" />
+  <input type="email" id="emailField" placeholder="Email Address" />
   <input type="text" id="otpField" placeholder="Enter OTP" />
 
   <button onclick="handleAuth()">Login</button>
@@ -82,49 +82,90 @@
 
 <script>
   let isLogin = true;
-  let generatedOTP = "";
+  let awaitingOTP = false;
 
   function toggleForm() {
     isLogin = !isLogin;
     document.getElementById("formTitle").innerText = isLogin ? "Login to TurboTronix" : "Register on TurboTronix";
     document.querySelector("button").innerText = isLogin ? "Login" : "Send OTP";
     document.getElementById("nameField").style.display = isLogin ? "none" : "block";
-    document.getElementById("otpField").style.display = isLogin ? "none" : "block";
+    document.getElementById("otpField").style.display = "none";
     document.getElementById("toggleText").innerText = isLogin ? "Don't have an account?" : "Already have an account?";
+    awaitingOTP = false;
   }
 
-  function handleAuth() {
+  async function handleAuth() {
     const name = document.getElementById("nameField").value.trim();
-    const phone = document.getElementById("phoneField").value.trim();
+    const email = document.getElementById("emailField").value.trim();
     const otp = document.getElementById("otpField").value.trim();
 
-    if (!phone) return alert("Enter phone number");
+    if (!email) return alert("Please enter your email");
 
     if (!isLogin) {
-      // Register - Simulate OTP
-      if (!name) return alert("Enter your name");
-      if (!otp) {
-        generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
-        alert("OTP sent: " + generatedOTP);
-        document.getElementById("otpField").style.display = "block";
-        return;
-      } else if (otp !== generatedOTP) {
-        alert("Incorrect OTP.");
-        return;
-      }
+      if (!awaitingOTP) {
+        if (!name) return alert("Please enter your name");
 
-      const user = { name, phone };
-      localStorage.setItem("user", JSON.stringify(user));
-      alert("Registered successfully!");
-      window.location.href = "index.html";
-    } else {
-      // Login
-      const stored = JSON.parse(localStorage.getItem("user"));
-      if (stored && stored.phone === phone) {
-        alert("Login successful!");
-        window.location.href = "index.html";
+        // Send register OTP
+        const res = await fetch("http://localhost:5000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("OTP sent to your email!");
+          document.getElementById("otpField").style.display = "block";
+          awaitingOTP = true;
+        } else {
+          alert(data.message || "Error sending OTP");
+        }
       } else {
-        alert("User not found. Please register first.");
+        // Verify OTP and complete registration
+        const res = await fetch("http://localhost:5000/api/auth/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, otp })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("Registration successful!");
+          localStorage.setItem("user", JSON.stringify(data.user));
+          window.location.href = "index.html";
+        } else {
+          alert(data.message || "Invalid OTP");
+        }
+      }
+    } else {
+      if (!awaitingOTP) {
+        // Send login OTP
+        const res = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("OTP sent to your email!");
+          document.getElementById("otpField").style.display = "block";
+          awaitingOTP = true;
+        } else {
+          alert(data.message || "User not found");
+        }
+      } else {
+        // Verify login OTP
+        const res = await fetch("http://localhost:5000/api/auth/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, otp })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("Login successful!");
+          localStorage.setItem("user", JSON.stringify(data.user));
+          window.location.href = "index.html";
+        } else {
+          alert(data.message || "Invalid OTP");
+        }
       }
     }
   }
@@ -132,7 +173,7 @@
   function googleLogin() {
     const fakeUser = {
       name: "Google User",
-      phone: "google-login"
+      email: "google@turbotronix.com"
     };
     localStorage.setItem("user", JSON.stringify(fakeUser));
     alert("Logged in with Google!");
