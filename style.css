@@ -1,81 +1,107 @@
-body {
+/* General Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0f0f0f;
-  color: #fff;
+  background: #f4f4f4;
+  color: #222;
 }
 
+/* Header */
 header {
-  background: linear-gradient(90deg, #ff0040, #8000ff);
-  padding: 30px 15px;
+  background: #111;
+  color: white;
+  padding: 1rem;
   text-align: center;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+.logo {
+  width: 40px;
+  margin-bottom: 8px;
 }
 
-header p {
-  font-size: 1.1rem;
-  margin-top: 8px;
+/* Deal of the Day */
+.deal-carousel {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  background: #ffe082;
+  padding: 10px;
+}
+.deal {
+  opacity: 0;
+  transition: all 0.5s ease;
+  font-weight: bold;
+}
+.deal.active {
+  opacity: 1;
 }
 
+/* Filters */
+.filters {
+  text-align: center;
+  margin: 15px 0;
+}
+.filters button {
+  padding: 8px 12px;
+  margin: 0 6px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.filters button:hover {
+  background: #555;
+}
+
+/* Products */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 30px;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  padding: 15px;
 }
-
 .product {
-  background-color: #1a1a1a;
-  border-radius: 15px;
-  padding: 20px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
-  box-shadow: 0 4px 8px #00000060;
-  transition: transform 0.3s ease;
 }
-
-.product:hover {
-  transform: scale(1.05);
-}
-
 .product img {
   width: 100%;
-  max-height: 180px;
-  object-fit: contain;
-  margin-bottom: 15px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 5px;
 }
-
 .product h2 {
+  font-size: 1.1rem;
   margin: 10px 0 5px;
-  font-size: 1.2rem;
 }
-
 .product p {
-  font-size: 1rem;
-  color: #00ff95;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-
 .product a {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: #ff0055;
+  padding: 8px 14px;
+  background: #00c853;
   color: white;
+  border-radius: 5px;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s;
 }
-
 .product a:hover {
-  background-color: #ff3370;
+  background: #009e3c;
 }
 
+/* Footer */
 footer {
+  background: #222;
+  color: #aaa;
+  padding: 1rem;
   text-align: center;
-  padding: 20px;
-  background-color: #111;
-  font-size: 0.9rem;
+  margin-top: 20px;
 }
