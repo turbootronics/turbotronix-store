@@ -10,6 +10,7 @@
 
   <header>
     <a href="login.html" style="color:white; position:absolute; top:10px; right:15px;">Login</a>
+    <div id="userInfo" style="position:absolute; right:20px; top:15px; color:white;"></div>
     <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Logo" class="logo" />
     <h1>⚡ TurboTronix</h1>
     <p>Gaming Gear & Tech Gadgets Delivered Fast</p>
@@ -168,6 +169,21 @@
       });
     }
   </script>
+  <script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userDiv = document.getElementById("userInfo");
+  if (user && user.name) {
+    userDiv.innerHTML = `Hi, ${user.name} | <a href="#" onclick="logout()" style="color:yellow;">Logout</a>`;
+  } else {
+    userDiv.innerHTML = `<a href="login.html" style="color:white;">Login</a>`;
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+    location.reload();
+  }
+</script>
+
 
 </body>
 </html>
