@@ -19,14 +19,14 @@
       text-align: center;
       position: relative;
     }
-    header h1 {
-      margin: 10px 0 5px;
-    }
     .logo {
       width: 40px;
       position: absolute;
       top: 15px;
       left: 15px;
+    }
+    header h1 {
+      margin: 10px 0 5px;
     }
     .filters {
       text-align: center;
@@ -36,7 +36,7 @@
       margin: 5px;
       padding: 8px 16px;
       border: none;
-      background: #555;
+      background: #444;
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
@@ -104,16 +104,25 @@
       background: #000;
       color: #888;
     }
+    #userInfo {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: white;
+    }
+    #userInfo a {
+      color: yellow;
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="login.html" style="color:white; position:absolute; top:10px; right:15px;">Login</a>
-    <div id="userInfo" style="position:absolute; right:20px; top:15px; color:white;"></div>
     <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Logo" class="logo" />
     <h1>⚡ TurboTronix</h1>
     <p>Gaming Gear & Tech Gadgets Delivered Fast</p>
+    <div id="userInfo"></div>
   </header>
 
   <!-- 📦 Deal of the Day Carousel -->
@@ -137,10 +146,84 @@
 
   <!-- 🛒 Products Section -->
   <section class="products">
-    <!-- Add 14 Products Here -->
-    <!-- Same product cards you provided (already included) -->
-    <!-- ... copied from your message above ... -->
-    <!-- Already formatted and categorized -->
+
+    <div class="product gaming">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Xbox-One-Controller-White.jpg" alt="Gamepad" />
+      <h2>Wireless Gamepad</h2>
+      <p>₹999</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Wireless Gamepad from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product gaming">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Gaming_keyboard_-_Alienware_AW768.jpg" alt="Gaming Keyboard" />
+      <h2>Gaming Keyboard (Backlit)</h2>
+      <p>₹899</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Gaming Keyboard from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/USB_Type-C_charger.jpg" alt="Charger" />
+      <h2>Type-C Fast Charger</h2>
+      <p>₹349</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Type-C Charger from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product audio">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Neckband_Headphones.jpg" alt="Neckband" />
+      <h2>Wireless Neckband</h2>
+      <p>₹399</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Neckband from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product lighting">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/LED_strips_RGB.jpg" alt="LED Strip" />
+      <h2>LED Strip Light (3M)</h2>
+      <p>₹299</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the LED Strip Light from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product utility">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Electric_Extension_Socket_India.jpg" alt="Extension Board" />
+      <h2>4-Port Extension Board</h2>
+      <p>₹249</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Extension Board from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product audio">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Boat_Earbuds_Airdopes.jpg" alt="TWS Earbuds" />
+      <h2>Boat Airdopes</h2>
+      <p>₹899</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Airdopes from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Mobile_holder.jpg" alt="Mobile Holder" />
+      <h2>Desk Mobile Holder</h2>
+      <p>₹199</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Mobile Holder from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product desk">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/CableOrganizer.jpg" alt="Cable Organizer" />
+      <h2>Desk Cable Organizer</h2>
+      <p>₹149</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Cable Organizer from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product utility">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/USB_Flash_Drive.jpg" alt="USB Drive" />
+      <h2>32GB USB Drive</h2>
+      <p>₹399</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the USB Drive from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product gaming">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Gaming_Mouse.jpg" alt="Gaming Mouse" />
+      <h2>RGB Gaming Mouse</h2>
+      <p>₹499</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Gaming Mouse from TurboTronix">Order on WhatsApp</a>
+    </div>
+
   </section>
 
   <footer>
@@ -148,7 +231,7 @@
   </footer>
 
   <script>
-    // 🔁 Deal Carousel Rotator
+    // Deal carousel
     let deals = document.querySelectorAll('.deal');
     let index = 0;
     setInterval(() => {
@@ -157,27 +240,21 @@
       deals[index].classList.add('active');
     }, 4000);
 
-    // 🔎 Product Filter
+    // Product filtering
     function filterProducts(category) {
-      let products = document.querySelectorAll('.product');
-      products.forEach(p => {
-        if (category === 'all' || p.classList.contains(category)) {
-          p.style.display = 'block';
-        } else {
-          p.style.display = 'none';
-        }
+      document.querySelectorAll('.product').forEach(p => {
+        p.style.display = category === 'all' || p.classList.contains(category) ? 'block' : 'none';
       });
     }
 
-    // 🧑 Session Check
+    // Session check
     const user = JSON.parse(localStorage.getItem("user"));
     const userDiv = document.getElementById("userInfo");
     if (user && user.name) {
-      userDiv.innerHTML = `Hi, ${user.name} | <a href="#" onclick="logout()" style="color:yellow;">Logout</a>`;
+      userDiv.innerHTML = `Hi, ${user.name} | <a href="#" onclick="logout()">Logout</a>`;
     } else {
       userDiv.innerHTML = `<a href="login.html" style="color:white;">Login</a>`;
     }
-
     function logout() {
       localStorage.removeItem("user");
       location.reload();
