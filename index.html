@@ -5,17 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TurboTronix</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    header img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .banner {
+      background: url('https://cdn.pixabay.com/photo/2019/11/22/17/16/gaming-4644825_1280.jpg') center/cover no-repeat;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .socials {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .socials a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #555;
+      font-weight: bold;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+    .product img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .product .status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: crimson;
+      color: white;
+      font-size: 0.8rem;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+    .product .status.soon {
+      background: orange;
+    }
+    .product h2 {
+      font-size: 1.2rem;
+    }
+    .product p {
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    .product a {
+      display: inline-block;
+      background: #00c853;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+
   <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Logo" />
     <h1>⚡ TurboTronix</h1>
     <p>Gaming Gear & Tech Gadgets Delivered Fast</p>
   </header>
+
+  <div class="banner">🔥 Limited Time Tech Deals!</div>
+
+  <div class="socials">
+    <a href="https://instagram.com" target="_blank">📸 Instagram</a>
+    <a href="https://t.me" target="_blank">📢 Telegram</a>
+  </div>
 
   <section class="products">
 
     <div class="product">
       <img src="https://cdn.pixabay.com/photo/2020/08/24/15/38/gaming-mouse-5513512_1280.jpg" alt="RGB Mouse" />
+      <span class="status">Sold Out</span>
       <h2>RGB Gaming Mouse</h2>
       <p>₹499</p>
       <a href="https://wa.me/917207763251?text=Hi! I want to order the RGB Gaming Mouse from TurboTronix" target="_blank">Order on WhatsApp</a>
@@ -30,6 +135,7 @@
 
     <div class="product">
       <img src="https://cdn.pixabay.com/photo/2020/11/07/18/47/charger-5722801_1280.jpg" alt="Fast Charger" />
+      <span class="status soon">Coming Soon</span>
       <h2>Type-C Fast Charger</h2>
       <p>₹349</p>
       <a href="https://wa.me/917207763251?text=Hi! I want the Fast Charger from TurboTronix" target="_blank">Order on WhatsApp</a>
