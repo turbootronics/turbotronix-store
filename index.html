@@ -231,7 +231,7 @@
   </footer>
 
   <script>
-    // Deal carousel
+    // 🔁 Deal Carousel
     let deals = document.querySelectorAll('.deal');
     let index = 0;
     setInterval(() => {
@@ -240,14 +240,14 @@
       deals[index].classList.add('active');
     }, 4000);
 
-    // Product filtering
+    // 🔍 Filter Products
     function filterProducts(category) {
       document.querySelectorAll('.product').forEach(p => {
         p.style.display = category === 'all' || p.classList.contains(category) ? 'block' : 'none';
       });
     }
 
-    // Session check
+    // 👤 Session
     const user = JSON.parse(localStorage.getItem("user"));
     const userDiv = document.getElementById("userInfo");
     if (user && user.name) {
@@ -255,6 +255,7 @@
     } else {
       userDiv.innerHTML = `<a href="login.html" style="color:white;">Login</a>`;
     }
+
     function logout() {
       localStorage.removeItem("user");
       location.reload();
