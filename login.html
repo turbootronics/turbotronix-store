@@ -86,7 +86,6 @@
   function toggleForm() {
     isLogin = !isLogin;
     awaitingOTP = false;
-
     document.getElementById("formTitle").innerText = isLogin ? "Login to TurboTronix" : "Register on TurboTronix";
     document.getElementById("authBtn").innerText = isLogin ? "Login" : "Send OTP";
     document.getElementById("nameField").style.display = isLogin ? "none" : "block";
@@ -98,6 +97,7 @@
     const name = document.getElementById("nameField").value.trim();
     const email = document.getElementById("emailField").value.trim();
     const otp = document.getElementById("otpField").value.trim();
+    const button = document.getElementById("authBtn");
 
     if (!email) return alert("Please enter your email");
 
@@ -105,12 +105,15 @@
       if (!awaitingOTP) {
         if (!name) return alert("Please enter your name");
 
+        button.innerText = "Sending...";
         const res = await fetch("http://localhost:5000/api/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email })
         });
         const data = await res.json();
+        button.innerText = "Verify OTP";
+
         if (res.ok) {
           alert("OTP sent to your email!");
           document.getElementById("otpField").style.display = "block";
@@ -119,12 +122,15 @@
           alert(data.message || "Error sending OTP");
         }
       } else {
+        button.innerText = "Verifying...";
         const res = await fetch("http://localhost:5000/api/auth/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, otp })
         });
         const data = await res.json();
+        button.innerText = "Send OTP";
+
         if (res.ok) {
           alert("Registration successful!");
           localStorage.setItem("user", JSON.stringify(data.user));
@@ -135,12 +141,15 @@
       }
     } else {
       if (!awaitingOTP) {
+        button.innerText = "Sending OTP...";
         const res = await fetch("http://localhost:5000/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email })
         });
         const data = await res.json();
+        button.innerText = "Verify OTP";
+
         if (res.ok) {
           alert("OTP sent to your email!");
           document.getElementById("otpField").style.display = "block";
@@ -149,12 +158,15 @@
           alert(data.message || "User not found");
         }
       } else {
+        button.innerText = "Verifying...";
         const res = await fetch("http://localhost:5000/api/auth/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, otp })
         });
         const data = await res.json();
+        button.innerText = "Login";
+
         if (res.ok) {
           alert("Login successful!");
           localStorage.setItem("user", JSON.stringify(data.user));
