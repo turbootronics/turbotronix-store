@@ -144,9 +144,9 @@
     <button onclick="filterProducts('desk')">Desk</button>
   </div>
 
-  <!-- 🛒 Products Section -->
+  <!-- 🛒 Product Cards -->
   <section class="products">
-
+    <!-- Each product -->
     <div class="product gaming">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Xbox-One-Controller-White.jpg" alt="Gamepad" />
       <h2>Wireless Gamepad</h2>
@@ -223,7 +223,6 @@
       <p>₹499</p>
       <a href="https://wa.me/917207763251?text=Hi! I want the Gaming Mouse from TurboTronix">Order on WhatsApp</a>
     </div>
-
   </section>
 
   <footer>
@@ -231,7 +230,7 @@
   </footer>
 
   <script>
-    // 🔁 Deal Carousel
+    // 🔁 Deal Carousel Rotator
     let deals = document.querySelectorAll('.deal');
     let index = 0;
     setInterval(() => {
@@ -240,14 +239,14 @@
       deals[index].classList.add('active');
     }, 4000);
 
-    // 🔍 Filter Products
+    // 🔎 Product Filter
     function filterProducts(category) {
       document.querySelectorAll('.product').forEach(p => {
         p.style.display = category === 'all' || p.classList.contains(category) ? 'block' : 'none';
       });
     }
 
-    // 👤 Session
+    // 👤 Login Session Handling
     const user = JSON.parse(localStorage.getItem("user"));
     const userDiv = document.getElementById("userInfo");
     if (user && user.name) {
@@ -261,6 +260,5 @@
       location.reload();
     }
   </script>
-
 </body>
 </html>
