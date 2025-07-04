@@ -3,177 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TurboTronix</title>
+  <title>TurboTronix Store</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-    }
-    header {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-    }
-    header img {
-      height: 50px;
-      margin-bottom: 10px;
-    }
-    .banner {
-      background: url('https://cdn.pixabay.com/photo/2019/11/22/17/16/gaming-4644825_1280.jpg') center/cover no-repeat;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px #000;
-    }
-    .socials {
-      text-align: center;
-      margin: 10px 0;
-    }
-    .socials a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #555;
-      font-weight: bold;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
-    }
-    .product img {
-      max-width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .product .status {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: crimson;
-      color: white;
-      font-size: 0.8rem;
-      padding: 3px 6px;
-      border-radius: 4px;
-    }
-    .product .status.soon {
-      background: orange;
-    }
-    .product h2 {
-      font-size: 1.2rem;
-    }
-    .product p {
-      font-weight: bold;
-      margin: 5px 0;
-    }
-    .product a {
-      display: inline-block;
-      background: #00c853;
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin-top: 8px;
-    }
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
 
   <header>
-    <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Logo" />
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Logo" class="logo" />
     <h1>⚡ TurboTronix</h1>
     <p>Gaming Gear & Tech Gadgets Delivered Fast</p>
   </header>
 
-  <div class="banner">🔥 Limited Time Tech Deals!</div>
+  <!-- 📦 Deal of the Day Carousel -->
+  <section class="deal-carousel">
+    <div class="deal active">🎮 Wireless Gamepad – ₹999</div>
+    <div class="deal">⌨️ Backlit Gaming Keyboard – ₹899</div>
+    <div class="deal">🎧 Neckband Bass+ – ₹399</div>
+    <div class="deal">💡 LED Strip 3M – ₹299</div>
+  </section>
 
-  <div class="socials">
-    <a href="https://instagram.com" target="_blank">📸 Instagram</a>
-    <a href="https://t.me" target="_blank">📢 Telegram</a>
+  <!-- 🛍️ Filter Buttons -->
+  <div class="filters">
+    <button onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('gaming')">Gaming</button>
+    <button onclick="filterProducts('mobile')">Mobile</button>
+    <button onclick="filterProducts('audio')">Audio</button>
   </div>
 
+  <!-- 🛒 Products Section -->
   <section class="products">
 
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2020/08/24/15/38/gaming-mouse-5513512_1280.jpg" alt="RGB Mouse" />
-      <span class="status">Sold Out</span>
-      <h2>RGB Gaming Mouse</h2>
-      <p>₹499</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want to order the RGB Gaming Mouse from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2022/01/23/16/18/led-strip-6961111_1280.jpg" alt="LED Strip" />
-      <h2>LED Strip Light (3M)</h2>
-      <p>₹299</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want to order the LED Strip Light from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2020/11/07/18/47/charger-5722801_1280.jpg" alt="Fast Charger" />
-      <span class="status soon">Coming Soon</span>
-      <h2>Type-C Fast Charger</h2>
-      <p>₹349</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the Fast Charger from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2022/06/14/09/40/fan-7260615_1280.jpg" alt="USB Fan" />
-      <h2>Mini USB Desk Fan</h2>
-      <p>₹149</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the Mini USB Fan from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2020/06/12/15/06/headphones-5288762_1280.jpg" alt="Neckband" />
-      <h2>Wireless Neckband (Bass+)</h2>
-      <p>₹399</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the Wireless Neckband from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2017/08/06/23/24/keyboard-2599952_1280.jpg" alt="Gaming Keyboard" />
-      <h2>Gaming Keyboard (Backlit)</h2>
-      <p>₹899</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the Backlit Gaming Keyboard from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
-      <img src="https://cdn.pixabay.com/photo/2016/11/18/15/03/speakers-1835512_1280.jpg" alt="USB Speaker" />
-      <h2>USB Sound Bar Speaker</h2>
-      <p>₹699</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the USB Sound Bar Speaker from TurboTronix" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <div class="product">
+    <div class="product gaming">
       <img src="https://cdn.pixabay.com/photo/2021/01/12/20/55/gamepad-5911682_1280.jpg" alt="Gamepad" />
       <h2>Wireless Gamepad</h2>
       <p>₹999</p>
-      <a href="https://wa.me/917207763251?text=Hi! I want the Wireless Gamepad from TurboTronix" target="_blank">Order on WhatsApp</a>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Wireless Gamepad from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product gaming">
+      <img src="https://cdn.pixabay.com/photo/2017/08/06/23/24/keyboard-2599952_1280.jpg" alt="Gaming Keyboard" />
+      <h2>Gaming Keyboard (Backlit)</h2>
+      <p>₹899</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Gaming Keyboard from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product mobile">
+      <img src="https://cdn.pixabay.com/photo/2020/11/07/18/47/charger-5722801_1280.jpg" alt="Charger" />
+      <h2>Type-C Fast Charger</h2>
+      <p>₹349</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Type-C Charger from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product audio">
+      <img src="https://cdn.pixabay.com/photo/2020/06/12/15/06/headphones-5288762_1280.jpg" alt="Neckband" />
+      <h2>Wireless Neckband</h2>
+      <p>₹399</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the Neckband from TurboTronix">Order on WhatsApp</a>
+    </div>
+
+    <div class="product lighting">
+      <img src="https://cdn.pixabay.com/photo/2022/01/23/16/18/led-strip-6961111_1280.jpg" alt="LED Strip" />
+      <h2>LED Strip Light (3M)</h2>
+      <p>₹299</p>
+      <a href="https://wa.me/917207763251?text=Hi! I want the LED Strip Light from TurboTronix">Order on WhatsApp</a>
     </div>
 
   </section>
@@ -181,5 +73,29 @@
   <footer>
     <p>© 2025 TurboTronix. Built for gamers ⚡</p>
   </footer>
+
+  <script>
+    // 🔁 Deal Carousel Rotator
+    let deals = document.querySelectorAll('.deal');
+    let index = 0;
+    setInterval(() => {
+      deals.forEach(d => d.classList.remove('active'));
+      index = (index + 1) % deals.length;
+      deals[index].classList.add('active');
+    }, 4000);
+
+    // 🔎 Product Filter
+    function filterProducts(category) {
+      let products = document.querySelectorAll('.product');
+      products.forEach(p => {
+        if (category === 'all' || p.classList.contains(category)) {
+          p.style.display = 'block';
+        } else {
+          p.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
