@@ -47,7 +47,6 @@
     }
     .google-btn {
       background: #db4437;
-      margin-top: 10px;
     }
     .toggle {
       text-align: center;
@@ -71,7 +70,7 @@
   <input type="email" id="emailField" placeholder="Email Address" />
   <input type="text" id="otpField" placeholder="Enter OTP" />
 
-  <button onclick="handleAuth()">Login</button>
+  <button onclick="handleAuth()" id="authBtn">Login</button>
   <button class="google-btn" onclick="googleLogin()">Sign in with Google</button>
 
   <div class="toggle">
@@ -86,12 +85,13 @@
 
   function toggleForm() {
     isLogin = !isLogin;
+    awaitingOTP = false;
+
     document.getElementById("formTitle").innerText = isLogin ? "Login to TurboTronix" : "Register on TurboTronix";
-    document.querySelector("button").innerText = isLogin ? "Login" : "Send OTP";
+    document.getElementById("authBtn").innerText = isLogin ? "Login" : "Send OTP";
     document.getElementById("nameField").style.display = isLogin ? "none" : "block";
     document.getElementById("otpField").style.display = "none";
     document.getElementById("toggleText").innerText = isLogin ? "Don't have an account?" : "Already have an account?";
-    awaitingOTP = false;
   }
 
   async function handleAuth() {
@@ -105,7 +105,6 @@
       if (!awaitingOTP) {
         if (!name) return alert("Please enter your name");
 
-        // Send register OTP
         const res = await fetch("http://localhost:5000/api/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -120,7 +119,6 @@
           alert(data.message || "Error sending OTP");
         }
       } else {
-        // Verify OTP and complete registration
         const res = await fetch("http://localhost:5000/api/auth/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -137,7 +135,6 @@
       }
     } else {
       if (!awaitingOTP) {
-        // Send login OTP
         const res = await fetch("http://localhost:5000/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -152,7 +149,6 @@
           alert(data.message || "User not found");
         }
       } else {
-        // Verify login OTP
         const res = await fetch("http://localhost:5000/api/auth/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
